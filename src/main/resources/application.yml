@@ -1,0 +1,25 @@
+server:
+  port: 8801
+
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test
+    username: root
+    password: root
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    generate-ddl: true # true일때 해당 데이터를 근거로서버 시작점에 DDL을 생성하여 DB에 적용한다.
+    show-sql: true # 콘솔에 JPA 실행 쿼리를 표시한다.
+    properties:
+      hibernate:
+        ddl-auto: update # ddl-auto= database 초기화 전략
+        # create : 기존 테이블 삭제 후 다시 생성
+        # create-drop : create 와 같으나 종료시정에 Drop Table
+        # update : 변경분 만 반영
+        # validate : 엔티티와 테이블이 정상 매핑이 되어있는지만 확인
+        # none : 사용하지 않음
+        format_sql: true # 콘솔에 출력되는 JPA 쿼리를 가독성 있게 표현
